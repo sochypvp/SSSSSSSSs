@@ -352,8 +352,8 @@ class ComposerStaticInit504ba7e4de3f9089781e07465461fc1e
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -534,6 +534,8 @@ class ComposerStaticInit504ba7e4de3f9089781e07465461fc1e
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\VanchayController' => __DIR__ . '/../..' . '/app/Http/Controllers/VanchayController.php',
+        'App\\Http\\Controllers\\cusUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/cusUserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -544,6 +546,17 @@ class ComposerStaticInit504ba7e4de3f9089781e07465461fc1e
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Backend_user' => __DIR__ . '/../..' . '/app/Models/Backend_user.php',
+        'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
+        'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
+        'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
+        'App\\Models\\Customer_user' => __DIR__ . '/../..' . '/app/Models/Customer_user.php',
+        'App\\Models\\Favorite' => __DIR__ . '/../..' . '/app/Models/Favorite.php',
+        'App\\Models\\Main_categories' => __DIR__ . '/../..' . '/app/Models/Main_categories.php',
+        'App\\Models\\Order_history' => __DIR__ . '/../..' . '/app/Models/Order_history.php',
+        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Silde_show' => __DIR__ . '/../..' . '/app/Models/Silde_show.php',
+        'App\\Models\\Sub_categories' => __DIR__ . '/../..' . '/app/Models/Sub_categories.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

@@ -13,8 +13,10 @@ class cusUserController extends Controller
         $cus = new Customer_user();
         $cus->id = $request->id;
         $cus->username = $request->username;
-        $cus->password = $request->username;
+        $cus->password = $request->password;
         $cus->save();
+
+        return response($cus);
     }
 
     public function userDelete(Request $request, $id){
