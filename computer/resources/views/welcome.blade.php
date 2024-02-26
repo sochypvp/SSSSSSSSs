@@ -21,10 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-<<<<<<< HEAD
         <h1>HH</h1>
-=======
-        <h1>hello this is Pich branch</h1>
->>>>>>> pich
+        <h1>hello this is Piczh branch</h1>
     </body>
 </html>
