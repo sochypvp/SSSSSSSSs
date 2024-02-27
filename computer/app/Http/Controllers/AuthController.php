@@ -53,4 +53,9 @@ class AuthController extends Controller
             ]);
         }
     }
+
+    public function getData(){
+        $user = User::all();
+        return response($user);
+    }
 }
