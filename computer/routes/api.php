@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cusUserController;
+use App\Http\Controllers\MainCategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('insertCus',[cusUserController::class, 'userInsert']);
+
+// Route of Main Categories
+Route::post('/dataMainCate', [MainCategoriesController::class, 'ShowMainCate']);
+Route::post('/AddMainCate', [MainCategoriesController::class, 'InsertData']);
