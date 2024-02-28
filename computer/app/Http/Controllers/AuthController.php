@@ -28,7 +28,7 @@ class AuthController extends Controller
             'user' => $user
         ]);
     }
-    public function login(Request $request){
+    public function loginApi(Request $request){
         $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -51,6 +51,34 @@ class AuthController extends Controller
                 'user' => $user,
                 'token' => $access_token
             ]);
+        }
+    }public function login(Request $request){
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $user = User::where('email',$request->email)->first();
+
+        if(!$user){
+            return response([
+                'meesage' => 'login successfully',
+                'success' => false
+            ]);
+        }
+
+        if(Hash::check($request->password,$user->password)){
+            // return response([
+            //     'meesage' => 'login successfully',
+            //     'success' => true,
+            //     'user' => $user,
+            // ]);
+            $login = [
+                'meesage' => 'login successfully',
+                'success' => true,
+                'user' => $user,
+            ];
+            return view('home',['user' => $login]);
         }
     }
 

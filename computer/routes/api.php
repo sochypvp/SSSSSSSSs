@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('register',[AuthController::class, 'register']);
-Route::post('login',[AuthController::class, 'login'])->name('Login');
+Route::post('login',[AuthController::class, 'loginApi'])->name('LoginApi');
 
 
 Route::middleware('auth:sanctum')->group(function(){

@@ -8,7 +8,7 @@
     @vite(['resources/sass/app.scss'])
 </head>
 <body>
-    <form class="form-data" method="POST" enctype="multipart/form-data">
+    <form action="{{route('Login')}}" class="form-data" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="">Login</label>
         <input type="text" name="email" placeholder="Email">
@@ -26,12 +26,12 @@
             var data = $('.form-data').serialize();
             $.ajax({
                 type: "post",
-                url: "{{route('Login')}}",
+                url: "{{route('LoginApi')}}",
                 data: data,
                 dataType: "json",
                 success: function (response) {
                     if(response.success){
-                        window.location.href = "{{route('Home')}}";
+                        window.location.href = "{{route('home')}}";
                     }
                 }
             });
