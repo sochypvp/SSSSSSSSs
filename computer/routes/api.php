@@ -20,3 +20,5 @@ Route::post('insertCus',[cusUserController::class, 'userInsert']);
 // Route of Main Categories
 Route::post('/dataMainCate', [MainCategoriesController::class, 'ShowMainCate']);
 Route::post('/AddMainCate', [MainCategoriesController::class, 'InsertData']);
+Route::post('/DeleteMainCate', [MainCategoriesController::class, 'DeleteData']);
+Route::post('/UpdateMainCate', [MainCategoriesController::class, 'UpdateData']);

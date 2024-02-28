@@ -25,6 +25,7 @@ class MainCategoriesController extends Controller
             'data' => $data,
         ]);
     }
+    // =============================Insert
     public function InsertData(Request $request){
         $main = new Main_categories();
         $main->id = $request->id;
@@ -41,6 +42,44 @@ class MainCategoriesController extends Controller
         }
         return response([
             'message' => 'Error',
+            'status' => false,
+        ]);
+    }
+    // =============================Delete
+    public function DeleteData(Request $request){
+        $main = new Main_categories();
+        $main->id = $request->id;
+
+        $data = Main_categories::find($main->id);
+
+        if($data->delete()){
+            return response([
+                'message' => 'Record deleted successfully',
+                'status' => true,
+            ]);
+        }
+        return response([
+            'message' => 'Error deleting record',
+            'status' => false,
+        ]);
+    }
+    // =============================Update
+    public function UpdateData(Request $request){
+        $main = new Main_categories();
+        $main->id = $request->id;
+        $main->categoryName = $request->categoryName;
+        $main->icon = $request->icon;
+
+        $data = Main_categories::where('id', $main->id)->update(['categoryName' => $main->categoryName, 'icon' => $main->icon]);
+        
+        if($data){
+            return response([
+                'message' => 'Record updated successfully',
+                'status' => true,
+            ]);
+        }
+        return response([
+            'message' => 'Error updating record',
             'status' => false,
         ]);
     }
