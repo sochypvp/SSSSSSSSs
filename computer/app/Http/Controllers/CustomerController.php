@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Main_categories;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class MainCategoriesController extends Controller
+class CustomerController extends Controller
 {
     //
     public function ShowData(Request $request){
-        $main = new Main_categories();
+        $cus = new Customer();
 
-        $data = $main::all();
+        $data = $cus::all();
         if(!$data){
             return response([
                 'message' => 'Record not found',
@@ -22,18 +22,20 @@ class MainCategoriesController extends Controller
         return response([
             'message' => 'Record found',
             'status' => true,
-            'data' => $data,
+            'data' => $data
         ]);
     }
-    // =============================Insert
     public function InsertData(Request $request){
-        $main = new Main_categories();
-        $main->id = $request->id;
-        $main->categoryName = $request->categoryName;
-        $main->icon = $request->icon;
+        $cus = new Customer();
+        $cus->customerName = $request->customerName;
+        $cus->customerPhone = $request->customerPhone;
+        $cus->customerAddress = $request->customerAddress;
+        $cus->customerEmail = $request->customerEmail;
+        $cus->deliveryAddress = $request->deliveryAddress;
+        $cus->accountId = $request->accountId;
 
-        if($main->save()){
-            $data = Main_categories::latest()->first();
+        if($cus->save()){
+            $data = Customer::latest()->first();
             return response([
                 'message' => 'it is Work',
                 'status' => true,
@@ -45,13 +47,11 @@ class MainCategoriesController extends Controller
             'status' => false,
         ]);
     }
-    // =============================Delete
     public function DeleteData(Request $request){
-        $main = new Main_categories();
-        $main->id = $request->id;
+        $cus = new Customer();
+        $cus->id = $request->id;
 
-        $data = Main_categories::find($main->id);
-
+        $data = $cus::find($cus->id);
         if($data->delete()){
             return response([
                 'message' => 'Record deleted successfully',
@@ -62,17 +62,26 @@ class MainCategoriesController extends Controller
             'message' => 'Error deleting record',
             'status' => false,
         ]);
-    }
-    // =============================Update
-    public function UpdateData(Request $request){
-        $main = new Main_categories();
-        $main->id = $request->id;
-        $main->categoryName = $request->categoryName;
-        $main->icon = $request->icon;
 
-        $data = Main_categories::where('id', $main->id)->update([
-            'categoryName' => $main->categoryName,
-            'icon' => $main->icon,
+
+    }
+    public function UpdateData(Request $request){
+        $cus = new Customer();
+        $cus->id = $request->id;
+        $cus->customerName = $request->customerName;
+        $cus->customerPhone = $request->customerPhone;
+        $cus->customerAddress = $request->customerAddress;
+        $cus->customerEmail = $request->customerEmail;
+        $cus->deliveryAddress = $request->deliveryAddress;
+        $cus->accountId = $request->accountId;
+
+        $data = $cus::where('id', $cus->id)->update([
+            'customerName' => $cus->customerName,
+            'customerPhone' => $cus->customerPhone,
+            'customerAddress' => $cus->customerAddress,
+            'customerEmail' => $cus->customerEmail,
+            'deliveryAddress' => $cus->deliveryAddress,
+            'accountId' => $cus->accountId,
         ]);
 
         if($data){

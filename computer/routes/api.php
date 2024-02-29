@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\cusUserController;
 use App\Http\Controllers\MainCategoriesController;
 use App\Http\Controllers\SubCategoriesController;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +37,9 @@ Route::post('/ShowCusUser', [cusUserController::class, 'ShowData']);
 Route::post('/InsertCusUser', [cusUserController::class, 'InsertData']);
 Route::post('/DeleteCusUser', [cusUserController::class, 'DeleteData']);
 Route::post('/UpdateCusUser', [cusUserController::class, 'UpdateData']);
+
+// Route of Customer_User
+Route::post('/ShowCustomer', [CustomerController::class, 'ShowData']);
+Route::post('/InsertCustomer', [CustomerController::class, 'InsertData']);
+Route::post('/DeleteCustomer', [CustomerController::class, 'DeleteData']);
+Route::post('/UpdateCustomer', [CustomerController::class, 'UpdateData']);
