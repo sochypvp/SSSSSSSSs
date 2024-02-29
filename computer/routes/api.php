@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[AuthController::class, 'register']);
 Route::post('login',[AuthController::class, 'loginApi'])->name('LoginApi');
-
+Route::post('getProductJoinCateg',[ProductController::class, 'productJoinSubCateg']);
+Route::post('getProductImg',[ProductController::class, 'getProductImage']);
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('getData',[AuthController::class, 'getData']);
+    Route::post('addProduct',[ProductController::class, 'addProduct'])->name("addProduct");
+    Route::post('getProduct',[ProductController::class, 'getData']);
 });
