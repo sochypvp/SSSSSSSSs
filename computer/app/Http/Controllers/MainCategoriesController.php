@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MainCategoriesController extends Controller
 {
     //
-    public function ShowMainCate(Request $request){
+    public function ShowData(Request $request){
         $main = new Main_categories();
 
         $data = $main::all();
@@ -71,7 +71,7 @@ class MainCategoriesController extends Controller
         $main->icon = $request->icon;
 
         $data = Main_categories::where('id', $main->id)->update(['categoryName' => $main->categoryName, 'icon' => $main->icon]);
-        
+
         if($data){
             return response([
                 'message' => 'Record updated successfully',

@@ -535,6 +535,7 @@ class ComposerStaticInit504ba7e4de3f9089781e07465461fc1e
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\MainCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainCategoriesController.php',
+        'App\\Http\\Controllers\\SubCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubCategoriesController.php',
         'App\\Http\\Controllers\\VanchayController' => __DIR__ . '/../..' . '/app/Http/Controllers/VanchayController.php',
         'App\\Http\\Controllers\\cusUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/cusUserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

@@ -19,14 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::post('insertCus',[cusUserController::class, 'userInsert']);
 
 // Route of Main Categories
-Route::post('/ShowMainCate', [MainCategoriesController::class, 'ShowMainCate']);
+Route::post('/ShowMainCate', [MainCategoriesController::class, 'ShowData']);
 Route::post('/InsertMainCate', [MainCategoriesController::class, 'InsertData']);
 Route::post('/DeleteMainCate', [MainCategoriesController::class, 'DeleteData']);
 Route::post('/UpdateMainCate', [MainCategoriesController::class, 'UpdateData']);
 
 // Route of Sub Categories
-Route::post('/ShowSubCate', [SubCategoriesController::class, 'ShowMainCate']);
+Route::post('/ShowSubCate', [SubCategoriesController::class, 'ShowData']);
 Route::post('/InsertSubCate', [SubCategoriesController::class, 'InsertData']);
 Route::post('/DeleteSubCate', [SubCategoriesController::class, 'DeleteData']);
 Route::post('/UpdateSubCate', [SubCategoriesController::class, 'UpdateData']);
 
+// Route of Customer_User
+Route::post('/ShowCusUser', [cusUserController::class, 'ShowData']);
+Route::post('/InsertCusUser', [cusUserController::class, 'InsertData']);
+Route::post('/DeleteCusUser', [cusUserController::class, 'DeleteData']);
+Route::post('/UpdateCusUser', [cusUserController::class, 'UpdateData']);

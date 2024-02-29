@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SubCategoriesController extends Controller
 {
-    public function ShowMainCate(Request $request){
+    public function ShowData(Request $request){
         $main = new Sub_categories();
 
         $data = $main::all();
