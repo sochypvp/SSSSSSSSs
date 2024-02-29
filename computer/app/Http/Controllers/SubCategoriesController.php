@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\customer_user;
+use App\Models\Sub_categories;
 use Illuminate\Http\Request;
 
-class cusUserController extends Controller
+class SubCategoriesController extends Controller
 {
     public function ShowData(Request $request){
-        $cus = new customer_user();
+        $main = new Sub_categories();
 
-        $data = $cus::all();
+        $data = $main::all();
         if(!$data){
             return response([
                 'message' => 'Record not found',
@@ -19,36 +19,37 @@ class cusUserController extends Controller
             ]);
         }
         return response([
-            'message' => 'Record Founded',
+            'message' => 'Record found',
             'status' => true,
             'data' => $data,
         ]);
     }
-    //=============================Insert
+    // =============================Insert
     public function InsertData(Request $request){
-        $cus = new Customer_user();
-        $cus->id = $request->id;
-        $cus->username = $request->username;
-        $cus->password = $request->password;
-
-        if($cus->save()){
-            $data = Customer_user::latest()->first();
+        $main = new Sub_categories();
+        $main->id = $request->id;
+        $main->categoryName = $request->categoryName;
+        $main->mainCategoryId = $request->mainCategoryId;
+        if($main->save()){
+            $data = Sub_categories::latest()->first();
             return response([
-                'message' => 'Insert Data Successfully',
+                'message' => 'it is Work',
                 'status' => true,
                 'data' => $data,
             ]);
-            return response([
-                'message' => 'Can not Insert Data',
-                'status' => false,
-            ]);
         }
+        return response([
+            'message' => 'Error',
+            'status' => false,
+        ]);
+        // return response($request);
     }
-
+    // =============================Delete
     public function DeleteData(Request $request){
-        $cus = new Customer_user();
-        $cus->id = $request->id;
-        $data = Customer_user::find($cus->id);
+        $main = new Sub_categories();
+        $main->id = $request->id;
+
+        $data = Sub_categories::find($main->id);
 
         if($data->delete()){
             return response([
@@ -60,16 +61,17 @@ class cusUserController extends Controller
             'message' => 'Error deleting record',
             'status' => false,
         ]);
-
+        // return response($request);
     }
+    // =============================Update
     public function UpdateData(Request $request){
-        $cus = new Customer_user();
-        $cus->id = $request->id;
-        $cus->username = $request->username;
-        $cus->password = $request->password;
+        $main = new Sub_categories();
+        $main->id = $request->id;
+        $main->categoryName = $request->categoryName;
+        $main->mainCategoryId = $request->mainCategoryId;
 
-        $data = $cus::where('id', $cus->id)->update(['username' => $cus->username, 'password' => $cus->password]);
-        
+        $data = Sub_categories::where('id', $main->id)->update(['categoryName' => $main->categoryName, 'mainCategoryId' => $main->mainCategoryId]);
+
         if($data){
             return response([
                 'message' => 'Record updated successfully',
@@ -80,7 +82,5 @@ class cusUserController extends Controller
             'message' => 'Error updating record',
             'status' => false,
         ]);
-
     }
-
 }
