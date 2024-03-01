@@ -4,9 +4,9 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\cusUserController;
 use App\Http\Controllers\MainCategoriesController;
+use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoriesController;
-use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,3 +57,9 @@ Route::post('/ShowProduct', [ProductController::class, 'ShowData']);
 Route::post('/InsertProduct', [ProductController::class, 'InsertData']);
 Route::post('/DeleteProduct', [ProductController::class, 'DeleteData']);
 Route::post('/UpdateProduct', [ProductController::class, 'UpdateData']);
+
+// Route of Order history
+Route::post('/ShowOrderHistory', [OrderHistoryController::class, 'ShowData']);
+Route::post('/InsertOrderHistory', [OrderHistoryController::class, 'InsertData']);
+Route::post('/DeleteOrderHistory', [OrderHistoryController::class, 'DeleteData']);
+Route::post('/UpdateOrderHistory', [OrderHistoryController::class, 'UpdateData']);
