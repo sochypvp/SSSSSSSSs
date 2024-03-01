@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\cusUserController;
 use App\Http\Controllers\MainCategoriesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoriesController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -50,3 +51,9 @@ Route::post('/ShowBrand', [BrandController::class, 'ShowData']);
 Route::post('/InsertBrand', [BrandController::class, 'InsertData']);
 Route::post('/DeleteBrand', [BrandController::class, 'DeleteData']);
 Route::post('/UpdateBrand', [BrandController::class, 'UpdateData']);
+
+// Route of Products
+Route::post('/ShowProduct', [ProductController::class, 'ShowData']);
+Route::post('/InsertProduct', [ProductController::class, 'InsertData']);
+Route::post('/DeleteProduct', [ProductController::class, 'DeleteData']);
+Route::post('/UpdateProduct', [ProductController::class, 'UpdateData']);
