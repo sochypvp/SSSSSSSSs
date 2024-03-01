@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\cusUserController;
 use App\Http\Controllers\MainCategoriesController;
@@ -43,3 +44,9 @@ Route::post('/ShowCustomer', [CustomerController::class, 'ShowData']);
 Route::post('/InsertCustomer', [CustomerController::class, 'InsertData']);
 Route::post('/DeleteCustomer', [CustomerController::class, 'DeleteData']);
 Route::post('/UpdateCustomer', [CustomerController::class, 'UpdateData']);
+
+// Route of Brand
+Route::post('/ShowBrand', [BrandController::class, 'ShowData']);
+Route::post('/InsertBrand', [BrandController::class, 'InsertData']);
+Route::post('/DeleteBrand', [BrandController::class, 'DeleteData']);
+Route::post('/UpdateBrand', [BrandController::class, 'UpdateData']);
