@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\cusUserController;
+use App\Http\Controllers\FavoriteCONTROLLER;
+use App\Http\Controllers\FavoriteController as ControllersFavoriteController;
 use App\Http\Controllers\MainCategoriesController;
 use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoriesController;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -63,3 +67,15 @@ Route::post('/ShowOrderHistory', [OrderHistoryController::class, 'ShowData']);
 Route::post('/InsertOrderHistory', [OrderHistoryController::class, 'InsertData']);
 Route::post('/DeleteOrderHistory', [OrderHistoryController::class, 'DeleteData']);
 Route::post('/UpdateOrderHistory', [OrderHistoryController::class, 'UpdateData']);
+
+//Route of Favorite
+Route::post('/ShowFav', [FavoriteController::class, 'ShowData']);
+Route::post('/InsertFav', [FavoriteController::class, 'InsertData']);
+Route::post('/DeleteFav', [FavoriteController::class, 'DeleteData']);
+Route::post('/UpdateFav', [FavoriteController::class, 'UpdateData']);
+
+//Route of Carts
+Route::post('/ShowCart', [CartController::class, 'ShowData']);
+Route::post('/InsertCart', [CartController::class, 'InsertData']);
+Route::post('/DeleteCart', [CartController::class, 'DeleteData']);
+Route::post('/UpdateCart', [CartController::class, 'UpdateData']);
