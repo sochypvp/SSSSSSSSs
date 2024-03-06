@@ -14,11 +14,22 @@ class imgResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'barcode' => $this->barcode,
-            'productName' => $this->productName,
-            'mainImage' => $this->getAllProduct
-        ];
+        return parent::toArray([
+            // 'id' => $this->id,
+            // 'barcode' => $request->barcode,
+            // 'productName' => $request->productName,
+            // 'partNumber' => $request->partNumber,
+            // 'specifications' => $request->specifications,
+            // 'description' => $request->description,
+            // 'price' => $request->price,
+            // 'discount' => $request->discount,
+            // 'warranty' => $request->warranty,
+            // 'subCategoryId' => $request->subCategoryId,
+            // 'brand' => $request->brand,
+            'data' => parent::toArray($request),
+            'images' =>  $this->productImg
+        ]);
+        // return ['products'=>$this,'mainImage' => $this->getAllProduct];
+        //return parent::toArray($request);
     }
 }

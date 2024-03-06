@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <style>
     body {
@@ -75,10 +76,10 @@
                             aria-current="true">
                             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span></a>
                         <a href="{{ route('product') }}"
-                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'product' ? 'active' : '' }}">
+                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'product' ? 'active' : '' }} {{ Route::currentRouteName() === 'addProductForm' ? 'active' : '' }}">
                             <i class="fa-solid fa-cart-shopping fa-fw me-3"></i><span>Products</span></a>
-                        <a href="#"
-                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === '#' ? 'active' : '' }}">
+                        <a href="{{ route('categories') }}"
+                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'categories' ? 'active' : '' }} {{ Route::currentRouteName() === 'subCateg' ? 'active' : '' }}">
                             <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Categories</span></a>
                         <a href="#"
                             class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === '#' ? 'active' : '' }}">
@@ -101,7 +102,7 @@
             <!-- Sidebar -->
 
             <!-- Navbar -->
-            <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top bg-secondary bg-gradient">
+            <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top bg-secondary bg-gradient p-1">
                 <!-- Container wrapper -->
                 <div class="container-fluid">
                     <!-- Toggle button -->
@@ -113,25 +114,25 @@
 
                     <!-- Brand -->
                     <a class="navbar-brand position-relative" href="#">
-                        <img src="https://w7.pngwing.com/pngs/185/649/png-transparent-kp-hd-logo.png" height="35"
-                            alt="MDB Logo" loading="lazy" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRocwD4uqAF2iv3qdR5VqN45H-cSr5ibEjFqSJbky_6SA&s"
+                            height="30" alt="MDB Logo" loading="lazy" />
                     </a>
-                    <!-- Search form -->
-                    <form class="d-none d-md-flex input-group w-auto my-auto">
-                        <input autocomplete="off" type="search" class="form-control rounded"
-                            placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
-                    </form>
 
                     <!-- Right links -->
                     <ul class="navbar-nav ms-auto d-flex flex-row ">
                         <!-- Notification dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow text-white" href="#"
-                                id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+                                id="navbarDropdownMenuLink" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                 aria-expanded="false">
                                 <i class="fas fa-bell"></i>
                                 <span class="badge rounded-pill badge-notification bg-danger ">1</span>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Option ssssssssssssssssssss1</a>
+                                <a class="dropdown-item" href="#">Option 2</a>
+                                <a class="dropdown-item" href="#">Option 3</a>
+                            </div>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
                                     <a class="dropdown-item" href="#">Some news</a>
@@ -145,19 +146,6 @@
                             </ul>
                         </li>
 
-                        <!-- Icon -->
-                        <li class="nav-item">
-                            <a class="nav-link me-3 me-lg-0 " href="#">
-                                <i class="fas fa-fill-drip"></i>
-                            </a>
-                        </li>
-                        <!-- Icon -->
-                        <li class="nav-item me-3 me-lg-0">
-                            <a class="nav-link" href="#">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </li>
-
                         <!-- Icon dropdown -->
                         <li class="nav-item dropdown ">
                             <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow text-white" href="#"
@@ -166,8 +154,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="#"><i
-                                            class="united kingdom flag"></i>English
+                                    <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English
                                         <i class="fa fa-check text-success ms-2"></i></a>
                                 </li>
                                 <li>
@@ -233,8 +220,6 @@
             <!-- Navbar -->
         </header>
         <!--Main Navigation-->
-        <!-- Modal -->
-        @include('subForm.addProductDropDownBox')
         <!--Main layout-->
         <main style="margin-top: 58px;height: unset;height: calc(100vh - 60px); d-flex justify-content-center"
             class="h-90 bg-white">
@@ -257,14 +242,13 @@
 </body>
 
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
+
 
 </html>

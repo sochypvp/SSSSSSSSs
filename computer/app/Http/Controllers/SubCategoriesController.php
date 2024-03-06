@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Main_categories;
 use App\Models\Sub_categories;
 use Illuminate\Http\Request;
 
@@ -82,5 +83,12 @@ class SubCategoriesController extends Controller
             'message' => 'Error updating record',
             'status' => false,
         ]);
+    }
+
+    public function getSubCategByMainCateg(Request $request){
+        if($request->mainCategoryId == 0) return response(Sub_categories::all());
+        $d = Main_categories::find($request->mainCategoryId);
+        $s = $d->subCategories()->get();
+        return response($s);
     }
 }

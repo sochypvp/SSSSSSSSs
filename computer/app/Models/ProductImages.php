@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProductImages extends Model
 {
     use HasFactory;
-    protected $fillable = ['mainImage'];
+    protected $fillable = ['imageUrl'];
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }
