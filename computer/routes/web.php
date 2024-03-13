@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainCategoriesController;
 use App\Models\Customer_user;
 use App\Models\Main_categories;
 use App\Models\Product;
 use App\Models\Sub_categories;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoriesController;
+use App\Http\Resources\mainCategory;
 use App\Http\Resources\pdImg\imgResource;
 use App\Models\Brand;
 use App\Models\ProductImages;
@@ -31,16 +33,19 @@ Route::get('/', function () {
 //================== Home Page =====================================================================================
 Route::get('/home', function () {
     $totalMainCateg = Main_categories::count();
-    $mainCateg = Main_categories::all();
+    $mainCateg = Main_categories::select("categoryName","id")->get();
     $totalSubCateg = Sub_categories::count();
-    $subCateg = Sub_categories::all();
+    $subCateg = Sub_categories::select("categoryName","id")->get();
     $totalBrand = Brand::count();
-    $brand = Brand::all();
+    $brand = Brand::select("brandName","id")->get();
+    $totalProduct = Product::count();
+    $product = Product::select('productName','id');
     return view('dashboard',
         [
             'mainCateg'=>[$totalMainCateg,$mainCateg],
             'subCateg'=>[$totalSubCateg,$subCateg],
-            'brand'=>[$totalBrand,$brand]
+            'brand'=>[$totalBrand,$brand],
+            'product'=>[$totalProduct,$product]
         ]);
 })->name('home');
 
@@ -75,32 +80,53 @@ Route::post('/productFilter',[ProductController::class, 'productFilter'])->name(
 //========================== Categories Route =======================================================================
 Route::get('categories',function(){
     $totalMainCateg = Main_categories::count();
-    $mainCateg = Main_categories::all();
+    $mainCateg = Main_categories::withCount('subCategories as totalSubCateg')->get();
     $totalSubCateg = Sub_categories::count();
     $subCateg = Sub_categories::all();
     $totalBrand = Brand::count();
-    $brand = Brand::all();
     return view('categories',
         [
             'mainCateg'=>[$totalMainCateg,$mainCateg],
             'subCateg'=>[$totalSubCateg,$subCateg],
-            'brand'=>[$totalBrand,$brand]
+            'brand'=>[$totalBrand]
         ]);
 })->name('categories');
 
 Route::get('categories/subCateg',function(){
     $totalMainCateg = Main_categories::count();
-    $mainCateg = Main_categories::all();
+    $mainCateg = Main_categories::withCount('subCategories as totalSubCateg')->get();
+    $totalSubCateg = Sub_categories::count();
+    $subCateg = Sub_categories::withCount('allProducts as totalProducts')->get();
+    $totalBrand = Brand::count();
+    return view('categories',
+        [
+            'mainCateg'=>[$totalMainCateg,$mainCateg],
+            'subCateg'=>[$totalSubCateg,$subCateg],
+            'brand'=>[$totalBrand]
+        ]);
+})->name('subCateg');
+
+Route::get('categories/brand',function(){
+    $totalMainCateg = Main_categories::count();
+    $mainCateg = Main_categories::withCount('subCategories as totalSubCateg')->get();
     $totalSubCateg = Sub_categories::count();
     $subCateg = Sub_categories::all();
     $totalBrand = Brand::count();
-    $brand = Brand::all();
+    $brand = Brand::withCount('allProducts as totalProducts')->get();
     return view('categories',
         [
             'mainCateg'=>[$totalMainCateg,$mainCateg],
             'subCateg'=>[$totalSubCateg,$subCateg],
             'brand'=>[$totalBrand,$brand]
         ]);
-})->name('subCateg');
+})->name('brand');
+
 
 Route::post('/getSubCategByMain',[SubCategoriesController::class, 'getSubCategByMainCateg'])->name('getSubCategByMain');
+//add categories
+Route::post('/addCategory', [MainCategoriesController::class, 'addCategory'])->name('addCategory');
+//remove categories
+Route::get('/removeCategory/{id}', [MainCategoriesController::class, 'removeCategory'])->name('removeCategory');
+
+//add sub category
+Route::post('/addSubCateg',[SubCategoriesController::class, 'insertData'])->name('addSubCategory');

@@ -28,21 +28,12 @@ class SubCategoriesController extends Controller
     // =============================Insert
     public function InsertData(Request $request){
         $main = new Sub_categories();
-        $main->id = $request->id;
         $main->categoryName = $request->categoryName;
         $main->mainCategoryId = $request->mainCategoryId;
         if($main->save()){
-            $data = Sub_categories::latest()->first();
-            return response([
-                'message' => 'it is Work',
-                'status' => true,
-                'data' => $data,
-            ]);
+            return redirect()->route('subCateg')->with(['message'=>'alert-success','text'=>'Category was added']);
         }
-        return response([
-            'message' => 'Error',
-            'status' => false,
-        ]);
+        return redirect()->route('subCateg')->with(['message'=>'alert-danger','text'=>'something was wrong']);
         // return response($request);
     }
     // =============================Delete

@@ -64,7 +64,7 @@
         </form>
         <!-- Modal -->
         @include('subForm.addProductDropDownBox')
-        <table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm scrolling-table" cellspacing="0"
+        <table id="dtDynamicVerticalScrollExample" class="table table-hover table-sm" cellspacing="0"
             width="100%">
             <thead>
                 <tr>
@@ -89,10 +89,10 @@
                         <tr id="data-row-{{ $s->id }}">
                             <th class="row-id" scope="row">{{ $s->id }}</th>
                             <td class="row-image dropdown">
-                                <a class="btn btn-secondary btn-sm btn-img-view" data-target="#exampleModal2"
+                                <a class="btn btn-sm btn-img-view" data-target="#exampleModal2"
                                     data-toggle="modal"
                                     img-link="@if ($s->product_img != null) @foreach ($s->product_img as $k){{ $k->imageUrl }}|@endforeach @endif">
-                                    <i class="fa-solid fa-image" style="margin-right: 5px"></i>View
+                                    <i class="fa-solid fa-image" style="margin-right: 5px"></i>
                                 </a>
                             </td>
                             <td class="row-barcode">{{ $s->barcode }}</td>
@@ -109,7 +109,7 @@
                             <td class="row-subCategoryId">{{ $s->subCategoryId }}</td>
                             <td class="row-brand">{{ $s->brand }}</td>
                             <td class="d-flex justify-content-center">
-                                <a data-id="{{ $s->id }}" href="productx" class="btn btn-edit btn-warning btn-sm"
+                                <a data-id="{{ $s->id }}" href="productx" class="btn btn-edit btn-outline-primary btn-sm"
                                     data-target="#exampleModal" data-toggle="modal">Edit</a>
                                 {{-- <form action="{{ route('delPdt', ['id' => $s->id]) }}" method="POST">
                                     @csrf
@@ -117,7 +117,7 @@
                                     <button type="button" class="btn btn-delete btn-danger btn-sm ms-1">Remove</button>
                                 </form> --}}
                                 <button data-id="{{ $s->id }}" type="button"
-                                    class="btn btn-delete btn-danger btn-sm ms-1" data-toggle="modal"
+                                    class="btn btn-delete btn-outline-danger btn-sm ms-1" data-toggle="modal"
                                     data-target="#exampleModal3">
                                     Remove
                                 </button>

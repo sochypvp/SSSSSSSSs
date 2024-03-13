@@ -26,42 +26,25 @@ class MainCategoriesController extends Controller
         ]);
     }
     // =============================Insert
-    public function InsertData(Request $request){
+    public function addCategory(Request $request){
         $main = new Main_categories();
-        $main->id = $request->id;
         $main->categoryName = $request->categoryName;
         $main->icon = $request->icon;
 
         if($main->save()){
-            $data = Main_categories::latest()->first();
-            return response([
-                'message' => 'it is Work',
-                'status' => true,
-                'data' => $data,
-            ]);
+            return redirect()->route('categories')->with(['message'=>'alert-success','text'=>'Category was added']);
         }
-        return response([
-            'message' => 'Error',
-            'status' => false,
-        ]);
+        return redirect()->route('categories')->with(['message'=>'alert-danger','text'=>'Something when wrong !!']);
     }
     // =============================Delete
-    public function DeleteData(Request $request){
-        $main = new Main_categories();
-        $main->id = $request->id;
+    public function removeCategory(Request $request){
 
-        $data = Main_categories::find($main->id);
+        $data = Main_categories::find($request->id);
 
         if($data->delete()){
-            return response([
-                'message' => 'Record deleted successfully',
-                'status' => true,
-            ]);
+            return redirect()->route('categories')->with(['message'=>'alert-success','text'=>'Category was removed']);
         }
-        return response([
-            'message' => 'Error deleting record',
-            'status' => false,
-        ]);
+        return redirect()->route('categories')->with(['message'=>'alert-danger','text'=>'Something when wrong !!']);
     }
     // =============================Update
     public function UpdateData(Request $request){

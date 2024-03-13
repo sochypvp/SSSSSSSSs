@@ -79,7 +79,7 @@
                             class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'product' ? 'active' : '' }} {{ Route::currentRouteName() === 'addProductForm' ? 'active' : '' }}">
                             <i class="fa-solid fa-cart-shopping fa-fw me-3"></i><span>Products</span></a>
                         <a href="{{ route('categories') }}"
-                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'categories' ? 'active' : '' }} {{ Route::currentRouteName() === 'subCateg' ? 'active' : '' }}">
+                            class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === 'categories' ? 'active' : '' }} {{ Route::currentRouteName() === 'subCateg' ? 'active' : '' }} {{ Route::currentRouteName() === 'brand' ? 'active' : '' }}">
                             <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Categories</span></a>
                         <a href="#"
                             class="list-group-item list-group-item-action py-2 ripple {{ Route::currentRouteName() === '#' ? 'active' : '' }}">
