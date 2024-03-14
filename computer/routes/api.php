@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MainCategoriesController;
 use App\Http\Controllers\SubCategoriesController;
@@ -56,3 +57,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('addProduct',[ProductController::class, 'addProduct']);
     Route::post('getProduct',[ProductController::class, 'getData']);
 });
+
+// Route of Brand
+Route::post('/ShowBrand', [BrandController::class, 'ShowData']);
+Route::post('/InsertBrand', [BrandController::class, 'InsertData']);
+Route::post('/DeleteBrand', [BrandController::class, 'DeleteData']);
+Route::post('/UpdateBrand', [BrandController::class, 'UpdateData']);
+
