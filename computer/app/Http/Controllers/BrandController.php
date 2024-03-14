@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD:computer/app/Http/Controllers/SubCategoriesController.php
 use App\Models\Main_categories;
 use App\Models\Sub_categories;
+=======
+use App\Models\Brand;
+>>>>>>> chai:computer/app/Http/Controllers/BrandController.php
 use Illuminate\Http\Request;
 
-class SubCategoriesController extends Controller
+class BrandController extends Controller
 {
-    public function ShowData(Request $request){
-        $main = new Sub_categories();
 
-        $data = $main::all();
+    public function ShowData(Request $request){
+        $brand = new Brand();
+
+        $data = $brand::all();
         if(!$data){
             return response([
                 'message' => 'Record not found',
@@ -22,11 +27,12 @@ class SubCategoriesController extends Controller
         return response([
             'message' => 'Record found',
             'status' => true,
-            'data' => $data,
+            'data' => $data
         ]);
     }
-    // =============================Insert
+    //========================Insert
     public function InsertData(Request $request){
+<<<<<<< HEAD:computer/app/Http/Controllers/SubCategoriesController.php
         $main = new Sub_categories();
         $main->categoryName = $request->categoryName;
         $main->mainCategoryId = $request->mainCategoryId;
@@ -35,14 +41,31 @@ class SubCategoriesController extends Controller
         }
         return redirect()->route('subCateg')->with(['message'=>'alert-danger','text'=>'something was wrong']);
         // return response($request);
+=======
+        $brand = new Brand();
+        $brand->brandName = $request->brandName;
+        $brand->logo = $request->logo;
+
+        if($brand->save()){
+            $data = $brand::latest()->first();
+            return response([
+                'message' => 'Insert Data Successfully',
+                'status' => true,
+                'data' => $data,
+            ]);
+            return response([
+                'message' => 'Insert fail',
+                'status' => false,
+            ]);
+        }
+>>>>>>> chai:computer/app/Http/Controllers/BrandController.php
     }
-    // =============================Delete
+
     public function DeleteData(Request $request){
-        $main = new Sub_categories();
-        $main->id = $request->id;
+        $brand = new Brand();
+        $brand->id = $request->id;
 
-        $data = Sub_categories::find($main->id);
-
+        $data = $brand::find($brand->id);
         if($data->delete()){
             return response([
                 'message' => 'Record deleted successfully',
@@ -53,17 +76,18 @@ class SubCategoriesController extends Controller
             'message' => 'Error deleting record',
             'status' => false,
         ]);
-        // return response($request);
     }
-    // =============================Update
+
     public function UpdateData(Request $request){
-        $main = new Sub_categories();
-        $main->id = $request->id;
-        $main->categoryName = $request->categoryName;
-        $main->mainCategoryId = $request->mainCategoryId;
+        $brand = new Brand();
+        $brand->id = $request->id;
+        $brand->brandName = $request->brandName;
+        $brand->logo = $request->logo;
 
-        $data = Sub_categories::where('id', $main->id)->update(['categoryName' => $main->categoryName, 'mainCategoryId' => $main->mainCategoryId]);
-
+        $data = $brand::where('id', $brand->id)->update([
+            'brandName' => $brand->brandName,
+            'logo' => $brand->logo,
+        ]);
         if($data){
             return response([
                 'message' => 'Record updated successfully',

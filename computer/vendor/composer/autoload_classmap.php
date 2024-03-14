@@ -8,10 +8,18 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CustomerController' => $baseDir . '/app/Http/Controllers/CustomerController.php',
     'App\\Http\\Controllers\\MainCategoriesController' => $baseDir . '/app/Http/Controllers/MainCategoriesController.php',
+=======
+    'App\\Http\\Controllers\\BrandController' => $baseDir . '/app/Http/Controllers/BrandController.php',
+    'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\CustomerController' => $baseDir . '/app/Http/Controllers/CustomerController.php',
+    'App\\Http\\Controllers\\MainCategoriesController' => $baseDir . '/app/Http/Controllers/MainCategoriesController.php',
+    'App\\Http\\Controllers\\OrderHistoryController' => $baseDir . '/app/Http/Controllers/OrderHistoryController.php',
+>>>>>>> chai
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
     'App\\Http\\Controllers\\SubCategoriesController' => $baseDir . '/app/Http/Controllers/SubCategoriesController.php',
     'App\\Http\\Controllers\\cusUserController' => $baseDir . '/app/Http/Controllers/cusUserController.php',
