@@ -1,15 +1,8 @@
 @include('modalForm.categoryDeleteConfirmBox')
-<form action="{{ route('addSubCategory') }}" class="d-flex w-100" method="POST">
+<form action="{{ route('addBrand') }}" class="d-flex w-100" method="POST">
     @csrf
     <div class="m-3 d-flex align-items-start">
-        <input required type="text" class="m-1 form-control" placeholder="Category Name" name="categoryName">
-        <select name="mainCategoryId" id="" class="form-select m-1">
-            @isset($mainCateg)
-                @foreach ($mainCateg[1] as $s)
-                    <option value="{{ $s->id }}">{{ $s->id }}-{{ $s->categoryName }}</option>
-                @endforeach
-            @endisset
-        </select>
+        <input required type="text" class="m-1 form-control" placeholder="brandName" name="brandName">
         <button class="m-1 btn btn-primary" type="submit">Add</button>
     </div>
 </form>

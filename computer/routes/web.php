@@ -130,3 +130,6 @@ Route::get('/removeCategory/{id}', [MainCategoriesController::class, 'removeCate
 
 //add sub category
 Route::post('/addSubCateg',[SubCategoriesController::class, 'insertData'])->name('addSubCategory');
+
+//brand
+Route::post('/addBrand',[Brand::class, 'insertData'])->name('addBrand');

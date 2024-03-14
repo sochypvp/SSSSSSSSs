@@ -2,7 +2,7 @@
 <form action="{{ route('addSubCategory') }}" class="d-flex w-100" method="POST">
     @csrf
     <div class="m-3 d-flex align-items-start">
-        <input required type="text" class="m-1 form-control" placeholder="Category Name" name="categoryName">
+        <input required type="text" class="m-1 form-control" placeholder="Sub Category Name" name="categoryName">
         <select name="mainCategoryId" id="" class="form-select m-1">
             @isset($mainCateg)
                 @foreach ($mainCateg[1] as $s)
